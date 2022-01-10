@@ -1,0 +1,57 @@
+{% extends 'bookstore/main.html' %}
+
+
+{% block content %}
+<h1 class = 'p-5'>customer</h1>
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        name: {{customer.name}}
+      </div>
+      <div class="col">
+        email: {{customer.email}}
+      </div>
+      <div class="col">
+        age: {{customer.age}}
+      </div>
+      <div class="col">
+        phone: {{customer.phone}}
+      </div>
+      
+      <div class="col">
+        number of orders: {{number_orders}}
+      </div>
+    </div>
+  </div>
+<div class='container pt-5'>
+    <table class="table">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">book</th>
+                <th scope="col">category</th>
+                <th scope="col">date</th>
+                <th scope="col">status</th>
+                <th scope="col">action</th>
+              </tr>
+        </thead>
+        <tbody>
+               
+                {% for item in orders %}
+                <tr>
+            
+                <td>{{item.book}}</td>
+                <td>{{item.book.categorey}}</td>
+                <td>{{item.date_created}}</td>
+                <td>{{item.status}}</td>
+                <td>
+                    <a href = '#'><i class="fas fa-edit"></i></a>
+                    <a class='text-danger' href = '#' ><i class="fas fa-trash-alt"></i></a>
+                </td>
+                </tr>
+                {% endfor %}
+
+        </tbody>
+      </table>
+</div>
+{% endblock %}

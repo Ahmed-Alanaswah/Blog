@@ -1,0 +1,129 @@
+{% extends 'bookstore/main.html' %}
+
+
+{% block content %}
+<h1 class='p-5'>dashboard</h1>
+<div class="container ">
+    <div class="row">
+      <div class="col">
+        Total Orders:  <span class="badge bg-primary"> {{t_orders}}</span>
+      </div>
+      <div class="col">
+        Pending Orders:<span class="badge bg-danger"> {{p_orders}}</span>
+      </div>
+      <div class="col">
+        Dileverd Orders: <span class="badge bg-success">{{d_orders}}</span>
+
+      </div>
+      <div class="col">
+        In Progress Orders: <span class="badge bg-warning text-dark">{{in_orders}}</span>
+
+      </div>
+      <div class="col">
+        Out of Orders: <span class="badge bg-secondary">{{out_orders}}</span>
+
+      </div>
+    </div>
+  </div>
+
+<div class="container pt-5">
+    <div class="row">
+      <div class="col">
+        <div class="card" style="">
+            <div class="card-body">
+              <h5 class="card-title">Customers</h5>
+              <h6 class="card-subtitle mb-2 text-muted"><a class="btn btn-success" href='#'>create cutomer</a></h6>
+              <table class="table">
+                <thead>
+                  <tr>
+                    {% comment %} <th scope="col">#</th> {% endcomment %}
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Show</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 
+                    {% for item in customers %}
+                    <tr>
+                    {% comment %} <th scope="row">1</th> {% endcomment %}
+                    <td>{{item.name}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.age}}</td>
+                    <td><a href="{% url 'customer' item.id %}"><i class="fas fa-eye"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                 
+              
+                </tbody>
+              </table>
+             
+            </div>
+          </div>
+      </div>
+      <div class="col">
+        <div class="card" style="">
+            <div class="card-body">
+              <h5 class="card-title">Orders</h5>
+              <h6 class="card-subtitle mb-2 text-muted"><a class="btn btn-success" href='#'>create order</a></h6>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">date</th>
+                    <th scope="col">customer</th>
+                    <th scope="col">book</th>
+                    <th scope="col">status</th>
+                    <th scope="col">action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                 
+                    {% for item in orders %}
+                    <tr>
+                
+                    <td>{{item.date_created}}</td>
+                    <td>{{item.customer}}</td>
+                    <td>{{item.book}}</td>
+                    <td>{{item.status}}</td>
+                    <td>
+                        <a href = '#'><i class="fas fa-edit"></i></a>
+                        <a class='text-danger' href = '#' ><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                 
+              
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+    </div>
+    <div class="row pt-5">
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+      </div>
+      <div class="col">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="card-link">Card link</a>
+              <a href="#" class="card-link">Another link</a>
+            </div>
+          </div>
+      </div>
+     
+    </div>
+  </div>
+{% endblock %}
