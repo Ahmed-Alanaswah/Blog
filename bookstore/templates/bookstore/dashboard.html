@@ -66,7 +66,7 @@
         <div class="card" style="">
             <div class="card-body">
               <h5 class="card-title">Orders</h5>
-              <h6 class="card-subtitle mb-2 text-muted"><a class="btn btn-success" href='#'>create order</a></h6>
+              {% comment %} <h6 class="card-subtitle mb-2 text-muted"><a class="btn btn-success" href="{%  url 'create' %}">create order</a></h6> {% endcomment %}
               <table class="table">
                 <thead>
                   <tr>
@@ -87,8 +87,8 @@
                     <td>{{item.book}}</td>
                     <td>{{item.status}}</td>
                     <td>
-                        <a href = '#'><i class="fas fa-edit"></i></a>
-                        <a class='text-danger' href = '#' ><i class="fas fa-trash-alt"></i></a>
+                        <a href = "{% url 'update' item.id %}"><i class="fas fa-edit"></i></a>
+                        <a class='text-danger' href = "{% url 'delete' item.id %}" ><i class="fas fa-trash-alt"></i></a>
                     </td>
                     </tr>
                     {% endfor %}
@@ -100,7 +100,7 @@
           </div>
       </div>
     </div>
-    <div class="row pt-5">
+    {% comment %} <div class="row pt-5">
       <div class="col">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
@@ -124,6 +124,6 @@
           </div>
       </div>
      
-    </div>
+    </div> {% endcomment %}
   </div>
 {% endblock %}

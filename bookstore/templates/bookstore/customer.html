@@ -5,6 +5,30 @@
 <h1 class = 'p-5'>customer</h1>
 
 <div class="container">
+  <div class="row">
+    <div class="col">
+     <a href="{% url 'create' customer.id %}">create order</a>
+    </div>
+   
+  </div>
+</div>
+<hr>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <form class="d-flex" method ='GET'>
+        {{myFilter.form}}
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>   
+    </div>
+   
+  </div>
+</div>
+
+<hr>
+
+<div class="container">
     <div class="row">
       <div class="col">
         name: {{customer.name}}
@@ -23,7 +47,7 @@
         number of orders: {{number_orders}}
       </div>
     </div>
-  </div>
+</div>
 <div class='container pt-5'>
     <table class="table">
         <thead class="table-dark">
@@ -45,9 +69,9 @@
                 <td>{{item.date_created}}</td>
                 <td>{{item.status}}</td>
                 <td>
-                    <a href = '#'><i class="fas fa-edit"></i></a>
-                    <a class='text-danger' href = '#' ><i class="fas fa-trash-alt"></i></a>
-                </td>
+                  <a href = "{% url 'update' item.id %}"><i class="fas fa-edit"></i></a>
+                  <a class='text-danger' href = "{% url 'delete' item.id %}" ><i class="fas fa-trash-alt"></i></a>
+              </td>
                 </tr>
                 {% endfor %}
 

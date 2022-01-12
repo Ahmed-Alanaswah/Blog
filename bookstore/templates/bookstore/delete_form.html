@@ -1,0 +1,14 @@
+{% extends 'bookstore/main.html' %} {% load static %} {% block content %}
+
+<div class="card" >
+	<div class="card-body">
+        <h3>Are you Sure ?</h3>
+        <form action="{% url 'delete' order.id %}" method="POST">
+            {% csrf_token %}
+            <a class="btn btn-primary" href = "{% url 'home'%}">return</a>
+			<button type="submit" class="btn btn-primary">yes</button>
+		</form>
+	</div>
+</div>
+
+{% endblock %}

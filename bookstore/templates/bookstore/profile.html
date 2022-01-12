@@ -1,6 +1,51 @@
-{% extends 'bookstore/main.html' %}
+{% extends 'bookstore/main.html' %} {% block content %}
+<h1 class="p-5">Profile</h1>
 
-
-{% block content %}
-<h1>profile</h1>
+<hr />
+<div class="container">
+	<div class="row">
+        <div class="col">
+			Name: <span class="badge bg-success">{{request.user.username}}</span>
+		</div>
+		<div class="col">
+			Total Orders: <span class="badge bg-primary"> {{t_orders}}</span>
+		</div>
+		<div class="col">
+			Pending Orders: <span class="badge bg-danger"> {{p_orders}}</span>
+		</div>
+		<div class="col">
+			Dileverd Orders: <span class="badge bg-success">{{d_orders}}</span>
+		</div>
+		<div class="col">
+			In Progress Orders:
+			<span class="badge bg-warning text-dark">{{in_orders}}</span>
+		</div>
+		<div class="col">
+			Out of Orders: <span class="badge bg-secondary">{{out_orders}}</span>
+		</div>
+	</div>
+</div>
+<hr >
+<div class="container pt-5">
+	<table class="table">
+		<thead class="table-dark">
+			<tr>
+				<th scope="col">book</th>
+				<th scope="col">category</th>
+				<th scope="col">date</th>
+				<th scope="col">status</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for item in orders %}
+			<tr>
+				<td>{{item.book}}</td>
+				<td>{{item.book.categorey}}</td>
+				<td>{{item.date_created}}</td>
+				<td>{{item.status}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
 {% endblock %}

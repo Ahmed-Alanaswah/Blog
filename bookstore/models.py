@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 from django.db.models.fields.related import ForeignKey
 
 # Create your models here.
@@ -9,10 +10,12 @@ class Tag(models.Model):
 
 
 class Customer(models.Model):
-    name =models.CharField(max_length=190,null=True) 
+    user = models.OneToOneField(User,null=True,on_delete=models.CASCADE)
+    name = models.CharField(max_length=190,null=True) 
     email = models.CharField(max_length=190,null=True)
     phone = models.CharField(max_length=190,null=True)
     age = models.CharField(max_length=190,null=True)
+    avatar = models.ImageField(blank = True,null= True,default='person.png')
     date_created = models.DateTimeField(auto_now_add=True, null = True)
 
 

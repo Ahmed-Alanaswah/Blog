@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'bookstore'
+    'bookstore',
+    'django_filters',
+    # 'bookstore.apps.BookstoreConfig'
 ]
 
 MIDDLEWARE = [
@@ -81,6 +83,18 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME':'DjangoDatabase',
+#         'USER':'postgres',
+#         'PASSWORD':'Aa1791994',
+#         'HOST':'localhost',
+#         'PORT':'5432'
+#     }
+# }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -122,8 +136,20 @@ STATICFILES_DIRS = [
  os.path.join(BASE_DIR, 'static')
  ]
 
+MEDIA_ROOT=os.path.join(BASE_DIR , 'static/images')
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST= 'smtp.gmail.com'
+EMAIL_PORT=587
+EMAIL_USE_TLS=True
+EMAIL_HOST_USER='alanaswehamed0@gmail.com'
+EMAIL_HOST_PASSWORD='Aa1791994'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+GOOGLE_RECAPTCHA_SECRET_KEY="6LehhwoeAAAAAHSPXtGHTXUIiouyfycv_S7sqBCk"
